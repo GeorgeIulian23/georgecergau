@@ -3,9 +3,10 @@ def read_char():
     a=input("Scrie un cuvant: ")
 
     for caracater in a:
-        if caracater !=" ":
-            b=b+1;
-
+        if caracater !=' ':
+            return 0
+        else:
+            b+=1
     print(b)
 
 read_char()

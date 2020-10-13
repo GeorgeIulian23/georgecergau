@@ -21,8 +21,8 @@ def validator_CNP():
         for valid in validare:
             numar=int(valid)*int(check_number[count])+numar
             count+=1
-
-        if int(CNP[12])==numar%11:
+        #print(numar)
+        if int(CNP[12])==numar%11 or numar%11==10:
             print("CNP ul este valid")
         else:
             print("cifra de control gresita!")

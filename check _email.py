@@ -7,6 +7,9 @@ def check_email():
             a=a+1
         if conditie ==".":
             b=b+1
+            if b==1 and a==0:
+                print("Adresa INVALIDA")
+                return 0
     if (a>=2 or b>=2):
         print("Adresa de e-mail invalida")
     else:
