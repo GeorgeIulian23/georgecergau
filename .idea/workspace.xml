@@ -303,10 +303,10 @@
     </configuration>
     <list>
       <item itemvalue="Python.Unnamed" />
-      <item itemvalue="Python.check_aparitii" />
-      <item itemvalue="Python.check_CNP" />
       <item itemvalue="Python.c3-l1" />
       <item itemvalue="Python.c4-l1" />
+      <item itemvalue="Python.check_CNP" />
+      <item itemvalue="Python.check_aparitii" />
       <item itemvalue="Python.spanzuratoarea" />
     </list>
     <recent_temporary>
