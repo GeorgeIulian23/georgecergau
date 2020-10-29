@@ -1,4 +1,9 @@
 import random
+
+global scor_omulet
+global scor_pisi
+scor_pisi = scor_omulet = 0
+
 def tabla_de_joc():
     str1 = "__1____2____3__"
     str2 = "__4____5____6__"
@@ -65,6 +70,8 @@ def liste_pozitii_alese():
     return lista_omulet,lista_pisi
 
 
+
+
 def alegem_pozitia():
     print("\t \t \t\b Bun venit in jocul nostru  de X si o \n    Va trebui sa alegi o pozitie din cele de mai jos ")
     tabla_de_joc()
@@ -79,7 +86,7 @@ def alegem_pozitia():
     liste_pozitii_alese()
     var_aux = 0
     if var_aux == 0:
-        if diferentiere == 1 :
+        if diferentiere == 1:
             print("Alege o pozitie omuletule" )
             poz = int(input(''))
             if poz < 1 or poz > 9:
@@ -117,35 +124,35 @@ def alegem_pozitia():
             lista_omulet.append(poz)
     global lista_string_tabla
     lista_string_tabla = list(str1)
-    if alegere_pisi == '0':
-        for i, val in enumerate(lista_string_tabla):
-            if str(poz_pisi) == val:
-                lista_string_tabla[i] = alegere_pisi
-    else:
-        for i, val in enumerate(lista_string_tabla):
-            if str(poz_pisi) == val:
-                lista_string_tabla[i] = alegere_pisi
+    # if alegere_pisi == '0':
+    for i, val in enumerate(lista_string_tabla):
+        if str(poz_pisi) == val:
+            lista_string_tabla[i] = alegere_pisi
+    # else:
+    #     for i, val in enumerate(lista_string_tabla):
+    #         if str(poz_pisi) == val:
+    #             lista_string_tabla[i] = alegere_pisi
 
-    if alegere_omulet == '0':
-        for i, val in enumerate(lista_string_tabla):
-            if str(poz) == val:
-                lista_string_tabla[i] = alegere_omulet
-    else:
-        for i, val in enumerate(lista_string_tabla):
-            if str(poz) == val:
-                lista_string_tabla[i] = alegere_omulet
+    # if alegere_omulet == '0':
+    for i, val in enumerate(lista_string_tabla):
+        if str(poz) == val:
+            lista_string_tabla[i] = alegere_omulet
+    # else:
+    #     for i, val in enumerate(lista_string_tabla):
+    #         if str(poz) == val:
+    #             lista_string_tabla[i] = alegere_omulet
 
-    str1 = str(lista_string_tabla)
+
     modificare_tabela()
     n = 4
     conditie = True
-    while n > 0 :
-        if diferentiere == 1 and conditie == True:
+    while n > 0:
+        if diferentiere == 1 and conditie is True:
             print('Este randul tau omuletule, Introdu {} in pozitiile libere'.format(alegere_omulet))
-            poz = int(input ("Alege pozitia cu atentie: "))
+            poz = int(input("Alege pozitia cu atentie: "))
             while poz not in lista_initiala:
                 print(" Alege din pozitiile libere {}".format(str(lista_initiala)))
-                poz = int(input ("Alege pozitia cu atentie din nou: "))
+                poz = int(input("Alege pozitia cu atentie din nou: "))
             lista_omulet.append(poz)
             modificare_tabela()
             for valoare in lista_initiala:
@@ -156,23 +163,23 @@ def alegem_pozitia():
             for valoare in lista_initiala:
                 if valoare == poz_pisi:
                     lista_initiala.remove(poz_pisi)
-            if alegere_pisi == '0':
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz_pisi) == val:
-                        lista_string_tabla[i] = alegere_pisi
-            else:
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz_pisi) == val:
-                        lista_string_tabla[i] = alegere_pisi
+            # if alegere_pisi == '0':
+            for i, val in enumerate(lista_string_tabla):
+                if str(poz_pisi) == val:
+                    lista_string_tabla[i] = alegere_pisi
+            # else:
+            #     for i, val in enumerate(lista_string_tabla):
+            #         if str(poz_pisi) == val:
+            #             lista_string_tabla[i] = alegere_pisi
 
-            if alegere_omulet == '0':
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz) == val:
-                        lista_string_tabla[i] = alegere_omulet
-            else:
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz) == val:
-                        lista_string_tabla[i] = alegere_omulet
+            # if alegere_omulet == '0':
+            for i, val in enumerate(lista_string_tabla):
+                if str(poz) == val:
+                    lista_string_tabla[i] = alegere_omulet
+            # else:
+            #     for i, val in enumerate(lista_string_tabla):
+            #         if str(poz) == val:
+            #             lista_string_tabla[i] = alegere_omulet
             modificare_tabela()
         else:
             print('Este randul tau Pisi, Introdu {} in pozitiile libere'.format(alegere_pisi))
@@ -192,52 +199,54 @@ def alegem_pozitia():
             for valoare in lista_initiala:
                 if valoare == poz:
                     lista_initiala.remove(poz)
-            if alegere_pisi == '0':
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz_pisi) == val:
-                        lista_string_tabla[i] = alegere_pisi
-            else:
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz_pisi) == val:
-                        lista_string_tabla[i] = alegere_pisi
+            # if alegere_pisi == '0':
+            for i, val in enumerate(lista_string_tabla):
+                if str(poz_pisi) == val:
+                    lista_string_tabla[i] = alegere_pisi
+            # else:
+            #     for i, val in enumerate(lista_string_tabla):
+            #         if str(poz_pisi) == val:
+            #             lista_string_tabla[i] = alegere_pisi
 
-            if alegere_omulet == '0':
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz) == val:
-                        lista_string_tabla[i] = alegere_omulet
-            else:
-                for i, val in enumerate(lista_string_tabla):
-                    if str(poz) == val:
-                        lista_string_tabla[i] = alegere_omulet
+            # if alegere_omulet == '0':
+            for i, val in enumerate(lista_string_tabla):
+                if str(poz) == val:
+                    lista_string_tabla[i] = alegere_omulet
+            # else:
+            #     for i, val in enumerate(lista_string_tabla):
+            #         if str(poz) == val:
+            #             lista_string_tabla[i] = alegere_omulet
 
         n -= 1
         booll = True
         modificare_tabela()
-        if choice_check_omulet(conditie) == True :
+
+        if choice_check_omulet(conditie) is True:
                 conditie = True
         else:
             booll = False
             print("Felicitari ai castigat omuletule! ")
+            scor_omulet += 1
 
-        if choice_check_pisi(conditie) == True :
+        if choice_check_pisi(conditie) == True:
                 conditie = True
+
         else:
             booll = False
             print("Felicitari ai castigat pisi! ")
-
-        if booll == False:
+            scor_pisi += 1
+        if booll is False:
+            print( "Scorul partidelor este... Pisi {} Omulet {}".format(scor_pisi, scor_omulet))
             print("Joc terminat. Vrei sa mai joci o data? Daca da, apasa 1, daca nu, apasa orice alta tasta")
             break
-            conditie = False
+
         if n == 1:
             print("Egalitate! Nimeni nu a castigat! Mai jucati? Daca da, apasa 1, daca nu orice altceva")
             break
         #print(lista_initiala)
     check = input('')
     if check == '1':
-        conditie = True
         alegem_pozitia()
-
 
 
 def modificare_tabela():
@@ -259,7 +268,7 @@ def modificare_tabela():
     print(string3)
 
 
-def choice_check_omulet(cond) :
+def choice_check_omulet(cond):
     if all(x in lista_omulet for x in [1, 2, 3]) == cond:
 
         return 0
@@ -281,8 +290,7 @@ def choice_check_omulet(cond) :
     elif all(x in lista_omulet for x in [3, 5, 7]) == cond:
 
         return 0
-    else:
-        cond == False
+
     return cond
 
 def choice_check_pisi(cond) :
@@ -307,8 +315,6 @@ def choice_check_pisi(cond) :
     elif all(x in lista_pisi for x in [3, 5, 7]) == cond:
 
         return 0
-    else:
-        cond == False
     return cond
 
 alegem_pozitia()
