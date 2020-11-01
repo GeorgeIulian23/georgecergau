@@ -5,18 +5,27 @@ global scor_pisi
 scor_pisi = scor_omulet = 0
 
 def tabla_de_joc():
+    """
+    Se afiseaza tabela de joc de la inceputul jocului
+    :return: Adevarat daca tabela este vizibila
+    """
     str1 = "__1____2____3__"
     str2 = "__4____5____6__"
     str3 = "__7____8____9__"
     print(str1+'\n'+str2 +'\n '+str3)
+    return True
 
-
-def alegere_litera() :
+def alegere_litera():
+    """
+    Functia ce face alegerea priei lietere x sau 0 in cadrul programului.
+    Initial se face o comparatie random iar apoi se alege x sau 0 in functie de rezultatul comparatiei
+    :return:
+    """
     global alegere_omulet
     global alegere_pisi
-    criteriu_alegere_1 = random.choice(range(0,100))
-    criteriu_alegere_2 = random.choice(range(0,100))
-    lista_alegeri=['x', 0]
+    criteriu_alegere_1 = random.choice(range(0, 100))
+    criteriu_alegere_2 = random.choice(range(0, 100))
+    lista_alegeri = ['x', 0]
     if criteriu_alegere_1 > criteriu_alegere_2:
         alegere_omulet = str(input("Alege x sau 0"))
         print("Incepe persoana cu {} ".format(alegere_omulet))
@@ -34,7 +43,7 @@ def alegere_litera() :
     else:
         alegere_pisi = 'x'
         print("Incepe Pisi cu {}".format(alegere_pisi))
-        aux =''
+        aux = ''
         for ales in lista_alegeri:
             if alegere_pisi == ales:
                 aux = ales
@@ -44,15 +53,19 @@ def alegere_litera() :
                     alegere_omulet = 'x'
     print('Se va juca astfel: \n Omuletul cu {} \n Pisi cu {} ! \n \t Bafta!! '.format(alegere_omulet, alegere_pisi))
 
-    return  alegere_omulet, alegere_pisi
+    return alegere_omulet, alegere_pisi
 
 
 
 def inceput_de_joc() -> int:
+    """
+    Functie ce defineste cine incepe primul jocul de x si 0
+    :return:
+    """
     global diferentiere
     diferentire = 0
-    criteriu_alegere_1 = random.choice(range(0,100))
-    criteriu_alegere_2 = random.choice(range(0,100))
+    criteriu_alegere_1 = random.choice(range(0, 100))
+    criteriu_alegere_2 = random.choice(range(0, 100))
     if criteriu_alegere_1 > criteriu_alegere_2:
         print("Omuletul alege primul pozitia")
         diferentiere = 1
@@ -62,23 +75,33 @@ def inceput_de_joc() -> int:
     return diferentire
 
 
-def liste_pozitii_alese():
+def liste_pozitii_alese() -> (list, list):
+    """
+    Definierea listerol pe care le vom utiliza in viitor pentru a adauga poziitile celor doo jucatori
+    :return:
+    """
     global lista_omulet
     global lista_pisi
-    lista_omulet=[]
-    lista_pisi=[]
-    return lista_omulet,lista_pisi
+    lista_omulet = []
+    lista_pisi = []
+    return lista_omulet, lista_pisi
 
 
 
 
 def alegem_pozitia():
+    """
+
+    Functia principala a programului ce defineste jocul de x si 0.
+
+    :return:
+    """
     print("\t \t \t\b Bun venit in jocul nostru  de X si o \n    Va trebui sa alegi o pozitie din cele de mai jos ")
     tabla_de_joc()
     alegere_litera()
     inceput_de_joc()
     dict_initial = {1: '.', 2: '.', 3: '.', 4: '.', 5: '.', 6: '.', 7: '.', 8: '.', 9: '.'}
-    lista_initiala=[]
+    lista_initiala = []
     str1 = "__1____2____3____4____5____6____7____8____9__"
     for key in dict_initial.keys():
         lista_initiala.append(key)
@@ -92,20 +115,16 @@ def alegem_pozitia():
             if poz < 1 or poz > 9:
                 print('Alege o alta pozitie omuletule')
                 poz = input('')
-
             lista_omulet.append(poz)
             for valoare in lista_initiala:
                 if valoare == poz:
                     lista_initiala.remove(valoare)
-            #print(lista_initiala)
             poz_pisi=random.choice(lista_initiala)
             lista_pisi.append(poz_pisi)
             for valoare in lista_initiala:
                 if valoare == poz_pisi:
                     lista_initiala.remove(valoare)
-            #print(poz_pisi)
         if diferentiere == 2:
-
             poz_pisi = random.choice(range(1,10))
             print("Alege o pozitie pisi")
             lista_pisi.append(poz_pisi)
@@ -124,23 +143,12 @@ def alegem_pozitia():
             lista_omulet.append(poz)
     global lista_string_tabla
     lista_string_tabla = list(str1)
-    # if alegere_pisi == '0':
     for i, val in enumerate(lista_string_tabla):
         if str(poz_pisi) == val:
             lista_string_tabla[i] = alegere_pisi
-    # else:
-    #     for i, val in enumerate(lista_string_tabla):
-    #         if str(poz_pisi) == val:
-    #             lista_string_tabla[i] = alegere_pisi
-
-    # if alegere_omulet == '0':
     for i, val in enumerate(lista_string_tabla):
         if str(poz) == val:
             lista_string_tabla[i] = alegere_omulet
-    # else:
-    #     for i, val in enumerate(lista_string_tabla):
-    #         if str(poz) == val:
-    #             lista_string_tabla[i] = alegere_omulet
 
 
     modificare_tabela()
@@ -163,23 +171,12 @@ def alegem_pozitia():
             for valoare in lista_initiala:
                 if valoare == poz_pisi:
                     lista_initiala.remove(poz_pisi)
-            # if alegere_pisi == '0':
             for i, val in enumerate(lista_string_tabla):
                 if str(poz_pisi) == val:
                     lista_string_tabla[i] = alegere_pisi
-            # else:
-            #     for i, val in enumerate(lista_string_tabla):
-            #         if str(poz_pisi) == val:
-            #             lista_string_tabla[i] = alegere_pisi
-
-            # if alegere_omulet == '0':
             for i, val in enumerate(lista_string_tabla):
                 if str(poz) == val:
                     lista_string_tabla[i] = alegere_omulet
-            # else:
-            #     for i, val in enumerate(lista_string_tabla):
-            #         if str(poz) == val:
-            #             lista_string_tabla[i] = alegere_omulet
             modificare_tabela()
         else:
             print('Este randul tau Pisi, Introdu {} in pozitiile libere'.format(alegere_pisi))
@@ -199,24 +196,12 @@ def alegem_pozitia():
             for valoare in lista_initiala:
                 if valoare == poz:
                     lista_initiala.remove(poz)
-            # if alegere_pisi == '0':
             for i, val in enumerate(lista_string_tabla):
                 if str(poz_pisi) == val:
                     lista_string_tabla[i] = alegere_pisi
-            # else:
-            #     for i, val in enumerate(lista_string_tabla):
-            #         if str(poz_pisi) == val:
-            #             lista_string_tabla[i] = alegere_pisi
-
-            # if alegere_omulet == '0':
             for i, val in enumerate(lista_string_tabla):
                 if str(poz) == val:
                     lista_string_tabla[i] = alegere_omulet
-            # else:
-            #     for i, val in enumerate(lista_string_tabla):
-            #         if str(poz) == val:
-            #             lista_string_tabla[i] = alegere_omulet
-
         n -= 1
         booll = True
         modificare_tabela()
@@ -243,13 +228,17 @@ def alegem_pozitia():
         if n == 1:
             print("Egalitate! Nimeni nu a castigat! Mai jucati? Daca da, apasa 1, daca nu orice altceva")
             break
-        #print(lista_initiala)
     check = input('')
     if check == '1':
         alegem_pozitia()
 
 
 def modificare_tabela():
+    """
+
+    Functie ce printeaza modificarile aparaute dupa parcurgerea mai multor mutari in jocul de x si 0
+    :return:
+    """
 
     print("\n \n \n ")
     string1 = ''
@@ -266,9 +255,14 @@ def modificare_tabela():
     print(string1)
     print(string2)
     print(string3)
-
+    return True
 
 def choice_check_omulet(cond):
+    """
+    Functie ce verifica daca omuletul a castiggat jocul
+    :param cond:  True sau False daca jocul nu este gata -- mereu este True
+    :return: conditia de check
+    """
     if all(x in lista_omulet for x in [1, 2, 3]) == cond:
 
         return 0
@@ -294,6 +288,11 @@ def choice_check_omulet(cond):
     return cond
 
 def choice_check_pisi(cond) :
+    """
+    Functie ce verifica daca omuletul a castiggat jocul
+    :param cond:  True sau False daca jocul nu este gata -- mereu este True
+    :return: conditia de check
+    """
     if all(x in lista_pisi for x in [1, 2, 3]) == cond:
 
         return 0
